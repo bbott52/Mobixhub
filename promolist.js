@@ -5,6 +5,7 @@ const promoList = [
   { code: "9876543210" },
    { code: "5273788375" },
    { code: "7979664801" },
+{ code: "6940101627" },
   // Add more allowed Telegram user IDs here
   
 ];
