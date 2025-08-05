@@ -73,12 +73,6 @@
       padding: 40px 20px;
       text-align: center;
     }
-    .promo input {
-      padding: 10px;
-      width: 200px;
-      border: 1px solid #aaa;
-      border-radius: 5px;
-    }
     .promo button {
       padding: 10px 20px;
       background: #007bff;
@@ -87,6 +81,10 @@
       margin-left: 10px;
       border-radius: 5px;
       cursor: pointer;
+    }
+    .promo a {
+      color: #007bff;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -139,8 +137,18 @@
 
   <section class="promo" id="promo-section">
     <h3>Get Free Order with Promo Code</h3>
-    <input type="text" id="promoCode" placeholder="Enter Promo Code">
-    <button onclick="goToSignup()">Apply Code</button>
+    <!-- Hidden input just to store promo -->
+    <input type="hidden" id="promoCode" />
+    <p id="promoStatus" style="color: red; margin: 10px 0;"></p>
+    <button onclick="goToSignup()">Explore Products</button>
+
+    <p style="margin-top: 15px; font-size: 0.95rem;">
+      Don't have a promo code?  
+      <a href="https://t.me/inamyophisintlinkbot" target="_blank">
+        Click here to message our Telegram bot
+      </a>  
+      and get one instantly.
+    </p>
   </section>
 
   <footer style="background:#111; color:#fff; padding:30px 20px; text-align:center;">
@@ -167,16 +175,48 @@
       document.getElementById("promo-section").scrollIntoView({ behavior: "smooth" });
     }
 
-    // Autofill promo code from URL param "promo"
-    window.addEventListener('DOMContentLoaded', () => {
+    let validPromo = false;
+    let currentPromo = "";
+
+    window.addEventListener("DOMContentLoaded", () => {
       const params = new URLSearchParams(window.location.search);
-      const promo = params.get('promo');
-      if (promo) {
-        const promoInput = document.getElementById('promoCode');
-        if (promoInput) promoInput.value = promo;
+      const promo = params.get("promo");
+
+      const promoInput = document.getElementById("promoCode");
+      const promoStatus = document.getElementById("promoStatus");
+
+      if (promo && promoInput) {
+        promoInput.value = promo;
+        currentPromo = promo;
+
+        // Check against loaded promo list
+        if (typeof promoList !== "undefined" && Array.isArray(promoList)) {
+          const exists = promoList.some(p => p.code === promo);
+          if (exists) {
+            validPromo = true;
+            promoStatus.style.color = "green";
+            promoStatus.textContent = "✅ Promo code applied successfully!";
+          } else {
+            promoStatus.textContent = "❌ Invalid promo code.";
+          }
+        } else {
+          promoStatus.textContent = "❌ Promo list not loaded.";
+        }
+      } else {
+        promoStatus.textContent = "❌ Promo code missing from URL.";
       }
     });
+
+    function goToSignup() {
+      if (!validPromo) {
+        alert("Promo code is invalid or missing. Use a correct promo link.");
+        return;
+      }
+
+      window.location.href = `signup.html?promo=${currentPromo}`;
+    }
   </script>
+
   <script src="iptrack.js"></script>
 </body>
 </html>
