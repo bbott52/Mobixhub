@@ -139,7 +139,7 @@ document.getElementById("multiStepForm").addEventListener("submit", function (e)
             alert(`❌ ${fileLabels[i]} is too large. Max ${MAX_SIZE_MB}MB.`);
             continue;
           }
-          statusMsg.textContent = `📤 Uploading ${fileLabels[i]}...`;
+          statusMsg.textContent = `📤 please wait a moment...`;
           await uploadFile(file, fileLabels[i]);
         }
       }
