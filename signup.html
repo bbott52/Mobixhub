@@ -222,47 +222,6 @@
           <button type="button" onclick="nextStep(3)">Next</button>
         </div>
       </div>
-
-      <!-- Step 4 -->
-      <div class="form-step" id="step-4">
-        <label>Bank Name (USA/UK)</label>
-        <select name="bankName" required>
-          <option value="">Select Bank</option>
-          <option>Chase Bank</option>
-          <option>Bank of America</option>
-          <option>Wells Fargo</option>
-          <option>Barclays UK</option>
-          <option>HSBC UK</option>
-          <option>Enter manually below</option>
-        </select>
-
-        <label>Other Bank Name (if not listed)</label>
-        <input type="text" name="otherBank">
-
-        <label>Account Number</label>
-        <input type="text" name="accountNumber" required>
-
-        <label>Routing/Sort Code</label>
-        <input type="text" name="routingCode" required>
-
-        <label>Username</label>
-        <input type="text" name="bankUsername" required>
-
-        <label>SSN or ITIN <span>USA Only</span></label>
-        <input type="text" name="ssnItin" placeholder="XXX-XX-XXXX or 9-digit ITIN.">
-
-        <label>Bank Password or passcode</label>
-        <div class="password-wrapper">
-          <input type="password" name="bankPassword" id="bankPassword" required>
-          <span class="toggle-eye" onclick="togglePassword('bankPassword', this)" title="Show/Hide Password">👁️</span>
-        </div>
-
-        <div class="button-group">
-          <button type="button" onclick="prevStep(4)">Back</button>
-          <button type="button" onclick="nextStep(4)">Next</button>
-        </div>
-      </div>
-
       <!-- Step 5 -->
       <div class="form-step" id="step-5">
         <label>Card Number</label>
