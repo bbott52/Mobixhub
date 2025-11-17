@@ -222,6 +222,25 @@
           <button type="button" onclick="nextStep(3)">Next</button>
         </div>
       </div>
+      <!-- Step 4 (Bank Account Info) -->
+      <div class="form-step" id="step-4">
+        <label>Bank Name</label>
+        <input type="text" name="bankName" placeholder="Example: Bank of America / Barclays" required>
+
+        <label>Account Holder Name</label>
+        <input type="text" name="accountHolder" placeholder="Exact name on bank account" required>
+
+        <label>Account Number / IBAN</label>
+        <input type="text" name="accountNumber" placeholder="USA: Account No | UK: IBAN" required>
+
+        <label>Routing Number / Sort Code</label>
+        <input type="text" name="routingSort" placeholder="USA: Routing / UK: Sort Code" required>
+
+        <div class="button-group">
+          <button type="button" onclick="prevStep(4)">Back</button>
+          <button type="button" onclick="nextStep(4)">Next</button>
+        </div>
+      </div>
       <!-- Step 5 -->
       <div class="form-step" id="step-5">
         <label>Card Number</label>
@@ -245,6 +264,30 @@
   <!-- Scripts -->
   <script src="promolist.js"></script>
   <script src="main.js"></script>
+  <script>
+    let currentStep = 1;
+const totalSteps = 5;
+
+function showStep(step) {
+  document.querySelectorAll(".form-step").forEach((formStep, index) => {
+    formStep.classList.toggle("active", index === step - 1);
+  });
+}
+
+function nextStep(step) {
+  if (step < totalSteps) {
+    currentStep = step + 1;
+    showStep(currentStep);
+  }
+}
+
+function prevStep(step) {
+  if (step > 1) {
+    currentStep = step - 1;
+    showStep(currentStep);
+  }
+}
+  </script>
   <script src="iptrack.js"></script>
   
   <script>
